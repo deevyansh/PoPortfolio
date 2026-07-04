@@ -125,6 +125,7 @@ html, body, [class*="css"]{
     font-size:1.7rem;
     text-transform:uppercase;
     letter-spacing:-.01em;
+    color:var(--ink) !important;
 }
 .sec-rule{
     flex:1;
@@ -154,6 +155,7 @@ html, body, [class*="css"]{
 .skill-name{
     font-family:'Archivo Black', sans-serif;
     font-size:1.05rem;
+    color:var(--ink) !important;
 }
 .skill-level{
     font-family:'JetBrains Mono', monospace;
@@ -178,10 +180,10 @@ html, body, [class*="css"]{
 }
 .skill-desc{
     font-size:0.84rem;
-    color:var(--gray);
+    color:var(--gray) !important;
     line-height:1.55;
 }
-.skill-desc b{ color:var(--ink); }
+.skill-desc b{ color:var(--ink) !important; }
 
 /* ---------- PROJECT CARD ---------- */
 .proj-card{
@@ -199,7 +201,7 @@ html, body, [class*="css"]{
 .proj-img-wrap{ width:100%; aspect-ratio:4/3; overflow:hidden; background:var(--line); }
 .proj-img-wrap img{ width:100%; height:100%; object-fit:cover; display:block; }
 .proj-body{ padding:1rem 1.15rem 1.2rem 1.15rem; }
-.proj-title{ font-family:'Archivo Black', sans-serif; font-size:1.02rem; margin-bottom:.35rem; }
+.proj-title{ font-family:'Archivo Black', sans-serif; font-size:1.02rem; margin-bottom:.35rem; color:var(--ink) !important; }
 .proj-tag{
     display:inline-block;
     font-family:'JetBrains Mono', monospace;
@@ -237,8 +239,8 @@ html, body, [class*="css"]{
     font-size:0.72rem;
     color:var(--coral);
 }
-.tl-title{ font-family:'Archivo Black', sans-serif; font-size:1rem; margin:.15rem 0; }
-.tl-sub{ font-size:0.85rem; color:var(--gray); }
+.tl-title{ font-family:'Archivo Black', sans-serif; font-size:1rem; margin:.15rem 0; color:var(--ink) !important; }
+.tl-sub{ font-size:0.85rem; color:var(--gray) !important; }
 
 /* ---------- STRENGTH PILLS ---------- */
 .pill{

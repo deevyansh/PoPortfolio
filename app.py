@@ -8,7 +8,7 @@ st.set_page_config(
 )
 
 # ----------------------------------------------------------------------------
-# GLOBAL STYLE
+# GLOBAL STYLE — single accent color (coral) on ink/paper neutrals only
 # ----------------------------------------------------------------------------
 st.markdown("""
 <style>
@@ -18,8 +18,6 @@ st.markdown("""
     --ink:#1C1B1F;
     --paper:#FAF9F6;
     --coral:#E8465C;
-    --mustard:#E8A33D;
-    --teal:#1F6F6F;
     --gray:#6B6B6B;
     --line:#E4E1DA;
 }
@@ -30,7 +28,7 @@ html, body, [class*="css"]{
 }
 
 #MainMenu, header, footer {visibility:hidden;}
-.block-container{ padding-top:1.2rem; padding-bottom:3rem; max-width:1100px;}
+.block-container{ padding-top:1.2rem; padding-bottom:3rem; max-width:1000px;}
 .stApp{ background:var(--paper); }
 
 /* ---------- HERO ---------- */
@@ -40,38 +38,29 @@ html, body, [class*="css"]{
     background:var(--ink);
     border-radius:6px;
     overflow:hidden;
-    margin-bottom:2.2rem;
+    margin-bottom:2rem;
 }
 .hero-wrap::before{
     content:"";
     position:absolute;
-    top:-60px; right:-60px;
-    width:260px; height:260px;
-    background:var(--coral);
+    top:-70px; right:-70px;
+    width:240px; height:240px;
+    border:2px solid var(--coral);
     border-radius:50%;
-    opacity:0.9;
-}
-.hero-wrap::after{
-    content:"";
-    position:absolute;
-    bottom:-90px; right:120px;
-    width:160px; height:160px;
-    background:var(--mustard);
-    border-radius:50%;
-    opacity:0.85;
+    opacity:0.55;
 }
 .eyebrow{
     font-family:'JetBrains Mono', monospace;
     letter-spacing:.18em;
     text-transform:uppercase;
-    color:var(--mustard);
+    color:var(--coral);
     font-size:0.72rem;
     position:relative; z-index:2;
 }
 .hero-name{
     font-family:'Archivo Black', sans-serif;
     color:var(--paper);
-    font-size:4.4rem;
+    font-size:4.2rem;
     line-height:0.98;
     margin:.5rem 0 .3rem 0;
     position:relative; z-index:2;
@@ -80,7 +69,7 @@ html, body, [class*="css"]{
 .hero-role{
     font-family:'Archivo Black', sans-serif;
     color:var(--coral);
-    font-size:1.5rem;
+    font-size:1.4rem;
     margin-bottom:1.1rem;
     position:relative; z-index:2;
 }
@@ -99,40 +88,49 @@ html, body, [class*="css"]{
     position:relative; z-index:2;
 }
 .hero-contact a{
-    color:var(--paper);
+    color:var(--paper) !important;
     text-decoration:none;
     font-size:0.86rem;
     font-family:'JetBrains Mono', monospace;
     border-bottom:1px solid rgba(255,255,255,0.35);
     padding-bottom:2px;
 }
-.hero-contact a:hover{ border-color:var(--mustard); color:var(--mustard); }
+.hero-contact a:hover{ border-color:var(--coral); color:var(--coral) !important; }
 
-/* ---------- SECTION HEADERS ---------- */
-.sec-head{
-    display:flex;
-    align-items:baseline;
-    gap:.7rem;
-    margin:2.6rem 0 1.3rem 0;
+/* ---------- TABS ---------- */
+.stTabs [data-baseweb="tab-list"]{
+    gap:0;
+    border-bottom:2px solid var(--line);
 }
-.sec-num{
-    font-family:'JetBrains Mono', monospace;
-    color:var(--coral);
-    font-size:0.85rem;
-}
-.sec-title{
+.stTabs [data-baseweb="tab"]{
     font-family:'Archivo Black', sans-serif;
-    font-size:1.7rem;
+    font-size:0.85rem;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    color:var(--gray);
+    padding:0.9rem 1.4rem;
+}
+.stTabs [aria-selected="true"]{
+    color:var(--ink) !important;
+    border-bottom:3px solid var(--coral) !important;
+}
+.tab-inner{ padding-top:1.8rem; }
+
+.sec-note{ color:var(--gray); font-size:0.9rem; margin-bottom:1.3rem; }
+.sec-note a{ color:var(--coral); font-weight:600; }
+
+.mini-head{
+    font-family:'Archivo Black', sans-serif;
+    font-size:1.15rem;
     text-transform:uppercase;
     letter-spacing:-.01em;
     color:var(--ink) !important;
+    border-bottom:2px solid var(--coral);
+    display:inline-block;
+    padding-bottom:.25rem;
+    margin:1.8rem 0 1.1rem 0;
 }
-.sec-rule{
-    flex:1;
-    height:1px;
-    background:var(--line);
-    margin-left:.5rem;
-}
+.mini-head:first-of-type{ margin-top:0; }
 
 /* ---------- SKILL CARD ---------- */
 .skill-card{
@@ -142,10 +140,7 @@ html, body, [class*="css"]{
     border-radius:4px;
     padding:1.1rem 1.3rem;
     margin-bottom:1rem;
-    height:100%;
 }
-.skill-card.teal{ border-left-color:var(--teal); }
-.skill-card.mustard{ border-left-color:var(--mustard); }
 .skill-top{
     display:flex;
     justify-content:space-between;
@@ -164,7 +159,7 @@ html, body, [class*="css"]{
     padding:.2rem .55rem;
     border-radius:20px;
     background:var(--ink);
-    color:var(--paper);
+    color:var(--paper) !important;
 }
 .skill-bar-track{
     width:100%; height:6px;
@@ -207,7 +202,7 @@ html, body, [class*="css"]{
     font-family:'JetBrains Mono', monospace;
     font-size:0.68rem;
     background:#F1EFE9;
-    color:var(--gray);
+    color:var(--gray) !important;
     padding:.15rem .5rem;
     border-radius:4px;
     margin-bottom:.6rem;
@@ -215,10 +210,10 @@ html, body, [class*="css"]{
 .proj-link{
     font-size:0.82rem;
     font-weight:600;
-    color:var(--coral);
+    color:var(--coral) !important;
     text-decoration:none;
 }
-.proj-link:hover{ color:var(--ink); }
+.proj-link:hover{ color:var(--ink) !important; }
 
 /* ---------- TIMELINE / EDU / CERT ---------- */
 .tl-item{
@@ -237,7 +232,7 @@ html, body, [class*="css"]{
 .tl-year{
     font-family:'JetBrains Mono', monospace;
     font-size:0.72rem;
-    color:var(--coral);
+    color:var(--coral) !important;
 }
 .tl-title{ font-family:'Archivo Black', sans-serif; font-size:1rem; margin:.15rem 0; color:var(--ink) !important; }
 .tl-sub{ font-size:0.85rem; color:var(--gray) !important; }
@@ -250,12 +245,10 @@ html, body, [class*="css"]{
     padding:.45rem 1rem;
     margin:0 .5rem .5rem 0;
     border-radius:30px;
-    border:1.5px solid var(--ink);
+    border:1.5px solid var(--coral);
+    color:var(--coral) !important;
     background:transparent;
 }
-.pill:nth-child(3n+1){ border-color:var(--coral); color:var(--coral); }
-.pill:nth-child(3n+2){ border-color:var(--teal); color:var(--teal); }
-.pill:nth-child(3n){ border-color:var(--mustard); color:#B87A18; }
 
 /* ---------- FOOTER CTA ---------- */
 .cta-wrap{
@@ -263,36 +256,36 @@ html, body, [class*="css"]{
     border-radius:6px;
     padding:2.6rem 3rem;
     text-align:center;
-    margin-top:3rem;
+    margin-top:1rem;
 }
 .cta-title{
     font-family:'Archivo Black', sans-serif;
-    color:var(--paper);
+    color:var(--paper) !important;
     font-size:2rem;
     margin-bottom:.6rem;
 }
-.cta-sub{ color:#D8D5CE; margin-bottom:1.4rem; }
+.cta-sub{ color:#D8D5CE !important; margin-bottom:1.4rem; }
 .cta-btn{
     display:inline-block;
     background:var(--coral);
-    color:#fff;
+    color:#fff !important;
     font-weight:700;
     padding:.75rem 2rem;
     border-radius:30px;
     text-decoration:none;
     font-size:0.95rem;
 }
-.cta-btn:hover{ background:var(--mustard); color:var(--ink); }
+.cta-btn:hover{ background:#fff; color:var(--ink) !important; }
 
 @media (max-width:700px){
-    .hero-name{ font-size:2.6rem; }
+    .hero-name{ font-size:2.4rem; }
     .hero-wrap{ padding:2.2rem 1.5rem; }
 }
 </style>
 """, unsafe_allow_html=True)
 
 # ----------------------------------------------------------------------------
-# HERO
+# HERO (always visible above the tabs)
 # ----------------------------------------------------------------------------
 st.markdown("""
 <div class="hero-wrap">
@@ -315,37 +308,38 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ----------------------------------------------------------------------------
-# SKILLS
+# TABS (2 windows: Profile, Work)
 # ----------------------------------------------------------------------------
-st.markdown("""
-<div class="sec-head"><span class="sec-num">01</span><span class="sec-title">Skills & Tools</span><div class="sec-rule"></div></div>
-""", unsafe_allow_html=True)
+tab_profile, tab_work = st.tabs(["Profile", "Selected Work"])
 
-skills = [
-    {
-        "name": "Adobe Photoshop", "level": "ADVANCED", "pct": 92, "cls": "",
-        "desc": "<b>Core:</b> Photo editing, retouching, background removal, image manipulation, color correction, layer management, clipping masks, smart objects.<br><b>Output:</b> Typography design, mockup editing, print prep, export optimization."
-    },
-    {
-        "name": "Adobe Illustrator", "level": "INTERMEDIATE", "pct": 72, "cls": "teal",
-        "desc": "<b>Core:</b> Pen tool, shape builder, pathfinder, vector illustration, typography, color palette development.<br><b>Output:</b> Logo & brand identity, packaging, business cards, flyers/posters, icons, print-ready artwork."
-    },
-    {
-        "name": "Figma", "level": "INTERMEDIATE", "pct": 70, "cls": "mustard",
-        "desc": "<b>Core:</b> Wireframing, auto layout, components, design systems, interactive prototypes, responsive basics.<br><b>Output:</b> Mobile app UI, website & landing page layouts, UI screens."
-    },
-    {
-        "name": "Canva", "level": "ADVANCED", "pct": 90, "cls": "",
-        "desc": "<b>Core:</b> Brand kit management, content creation, template customization.<br><b>Output:</b> Social posts & carousels, stories, posters, presentations, marketing creatives."
-    },
-]
+# ---------------- PROFILE TAB (skills + education + strengths) ----------------
+with tab_profile:
+    st.markdown('<div class="tab-inner">', unsafe_allow_html=True)
 
-c1, c2 = st.columns(2)
-cols = [c1, c2, c1, c2]
-for col, s in zip(cols, skills):
-    with col:
+    st.markdown('<div class="mini-head">Skills & Tools</div>', unsafe_allow_html=True)
+
+    skills = [
+        {
+            "name": "Adobe Photoshop", "level": "ADVANCED", "pct": 92,
+            "desc": "<b>Core:</b> Photo editing, retouching, background removal, image manipulation, color correction, layer management, clipping masks, smart objects.<br><b>Output:</b> Typography design, mockup editing, print prep, export optimization."
+        },
+        {
+            "name": "Adobe Illustrator", "level": "INTERMEDIATE", "pct": 72,
+            "desc": "<b>Core:</b> Pen tool, shape builder, pathfinder, vector illustration, typography, color palette development.<br><b>Output:</b> Logo & brand identity, packaging, business cards, flyers/posters, icons, print-ready artwork."
+        },
+        {
+            "name": "Figma", "level": "INTERMEDIATE", "pct": 70,
+            "desc": "<b>Core:</b> Wireframing, auto layout, components, design systems, interactive prototypes, responsive basics.<br><b>Output:</b> Mobile app UI, website & landing page layouts, UI screens."
+        },
+        {
+            "name": "Canva", "level": "ADVANCED", "pct": 90,
+            "desc": "<b>Core:</b> Brand kit management, content creation, template customization.<br><b>Output:</b> Social posts & carousels, stories, posters, presentations, marketing creatives."
+        },
+    ]
+
+    for s in skills:
         st.markdown(f"""
-        <div class="skill-card {s['cls']}">
+        <div class="skill-card">
             <div class="skill-top">
                 <span class="skill-name">{s['name']}</span>
                 <span class="skill-level">{s['level']}</span>
@@ -355,96 +349,13 @@ for col, s in zip(cols, skills):
         </div>
         """, unsafe_allow_html=True)
 
-# ----------------------------------------------------------------------------
-# PORTFOLIO (live from Behance)
-# ----------------------------------------------------------------------------
-st.markdown("""
-<div class="sec-head"><span class="sec-num">02</span><span class="sec-title">Selected Work</span><div class="sec-rule"></div></div>
-<p style="color:var(--gray); margin-top:-0.8rem; margin-bottom:1.4rem; font-size:0.9rem;">
-Pulled straight from <a href="https://www.behance.net/poojakhuswha" target="_blank" style="color:var(--coral); font-weight:600;">behance.net/poojakhuswha</a> — click any piece to view the full case study.
-</p>
-""", unsafe_allow_html=True)
-
-projects = [
-    {
-        "title": "Shre Jewelry — Brand Identity & Marketing Design",
-        "tag": "BRANDING",
-        "img": "https://mir-s3-cdn-cf.behance.net/projects/404/b63f7e250565427.Y3JvcCwxMTIzLDg3OCwwLDE4MjM.jpg",
-        "link": "https://www.behance.net/gallery/250565427/Shre-Jewelry-Brand-Identity-Marketing-Design",
-    },
-    {
-        "title": "NEXTIN Branding",
-        "tag": "LOGO & IDENTITY",
-        "img": "https://mir-s3-cdn-cf.behance.net/projects/404/4cc7df249880479.Y3JvcCw4MDgsNjMyLDcwLDA.png",
-        "link": "https://www.behance.net/gallery/249880479/NEXTIN-Branding",
-    },
-    {
-        "title": "Social Media Poster Design",
-        "tag": "SOCIAL CREATIVE",
-        "img": "https://mir-s3-cdn-cf.behance.net/projects/404/f6ea7a251748379.Y3JvcCwyMzYyLDE4NDcsMCw0MTU.png",
-        "link": "https://www.behance.net/gallery/251748379/SOCIAL-MEDIA-POSTER-DESIGN",
-    },
-    {
-        "title": "Poster Design",
-        "tag": "PRINT",
-        "img": "https://mir-s3-cdn-cf.behance.net/projects/404/72697a251131707.Y3JvcCwxMzA5LDEwMjQsMTEzLDA.png",
-        "link": "https://www.behance.net/gallery/251131707/Poster-design",
-    },
-    {
-        "title": "Corousal",
-        "tag": "SOCIAL CREATIVE",
-        "img": "https://mir-s3-cdn-cf.behance.net/projects/404/08f9d1251945673.Y3JvcCwyMzYyLDE4NDcsMCwyNTc.png",
-        "link": "https://www.behance.net/gallery/251945673/corousal",
-    },
-]
-
-cols = st.columns(3)
-for i, p in enumerate(projects):
-    with cols[i % 3]:
-        st.markdown(f"""
-        <div class="proj-card">
-            <div class="proj-img-wrap"><img src="{p['img']}" /></div>
-            <div class="proj-body">
-                <span class="proj-tag">{p['tag']}</span>
-                <div class="proj-title">{p['title']}</div>
-                <a class="proj-link" href="{p['link']}" target="_blank">View case study →</a>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-
-# fill-in project ideas (from resume, no live images) as text-only cards
-with cols[len(projects) % 3]:
-    st.markdown("""
-    <div class="proj-card">
-        <div class="proj-img-wrap" style="display:flex;align-items:center;justify-content:center;background:var(--ink);">
-            <span style="font-family:'Archivo Black',sans-serif; color:var(--mustard); font-size:1.1rem; text-align:center; padding:1rem;">PACKAGING<br>DESIGN</span>
-        </div>
-        <div class="proj-body">
-            <span class="proj-tag">PACKAGING</span>
-            <div class="proj-title">Packaging Design Concept</div>
-            <div style="font-size:0.82rem; color:var(--gray);">Product packaging mockups with label design and print-ready artwork, built in Illustrator.</div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-# ----------------------------------------------------------------------------
-# EDUCATION & CERTIFICATIONS
-# ----------------------------------------------------------------------------
-st.markdown("""
-<div class="sec-head"><span class="sec-num">03</span><span class="sec-title">Education & Certifications</span><div class="sec-rule"></div></div>
-""", unsafe_allow_html=True)
-
-e1, e2 = st.columns(2)
-with e1:
+    st.markdown('<div class="mini-head">Education & Certifications</div>', unsafe_allow_html=True)
     st.markdown("""
     <div class="tl-item">
         <div class="tl-year">2022 — 2025</div>
         <div class="tl-title">Bachelor of Arts (Honours)</div>
         <div class="tl-sub">Aryabhatta College, University of Delhi</div>
     </div>
-    """, unsafe_allow_html=True)
-with e2:
-    st.markdown("""
     <div class="tl-item">
         <div class="tl-year">CERTIFICATION</div>
         <div class="tl-title">Graphic Design Certification</div>
@@ -457,24 +368,89 @@ with e2:
     </div>
     """, unsafe_allow_html=True)
 
-# ----------------------------------------------------------------------------
-# STRENGTHS
-# ----------------------------------------------------------------------------
-st.markdown("""
-<div class="sec-head"><span class="sec-num">04</span><span class="sec-title">Strengths</span><div class="sec-rule"></div></div>
-""", unsafe_allow_html=True)
+    st.markdown('<div class="mini-head">Strengths</div>', unsafe_allow_html=True)
+    strengths = ["Creative Thinking", "Visual Storytelling", "Attention to Detail", "Communication Skills",
+                 "Problem Solving", "Time Management", "Adaptability"]
+    st.markdown("".join([f'<span class="pill">{s}</span>' for s in strengths]), unsafe_allow_html=True)
 
-strengths = ["Creative Thinking", "Visual Storytelling", "Attention to Detail", "Communication Skills",
-             "Problem Solving", "Time Management", "Adaptability"]
-st.markdown("".join([f'<span class="pill">{s}</span>' for s in strengths]), unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 
-# ----------------------------------------------------------------------------
-# CTA / CONTACT
-# ----------------------------------------------------------------------------
-st.markdown("""
-<div class="cta-wrap">
-    <div class="cta-title">Let's design something great together.</div>
-    <div class="cta-sub">Open to graphic design roles — branding, social media, and packaging.</div>
-    <a class="cta-btn" href="mailto:poojakhuswha7012@gmail.com">poojakhuswha7012@gmail.com</a>
-</div>
-""", unsafe_allow_html=True)
+# ---------------- WORK TAB (portfolio + contact) ----------------
+with tab_work:
+    st.markdown('<div class="tab-inner">', unsafe_allow_html=True)
+    st.markdown("""
+    <p class="sec-note">Pulled straight from
+    <a href="https://www.behance.net/poojakhuswha" target="_blank">behance.net/poojakhuswha</a>
+    — click any piece to view the full case study.</p>
+    """, unsafe_allow_html=True)
+
+    projects = [
+        {
+            "title": "Shre Jewelry — Brand Identity & Marketing Design",
+            "tag": "BRANDING",
+            "img": "https://mir-s3-cdn-cf.behance.net/projects/404/b63f7e250565427.Y3JvcCwxMTIzLDg3OCwwLDE4MjM.jpg",
+            "link": "https://www.behance.net/gallery/250565427/Shre-Jewelry-Brand-Identity-Marketing-Design",
+        },
+        {
+            "title": "NEXTIN Branding",
+            "tag": "LOGO & IDENTITY",
+            "img": "https://mir-s3-cdn-cf.behance.net/projects/404/4cc7df249880479.Y3JvcCw4MDgsNjMyLDcwLDA.png",
+            "link": "https://www.behance.net/gallery/249880479/NEXTIN-Branding",
+        },
+        {
+            "title": "Social Media Poster Design",
+            "tag": "SOCIAL CREATIVE",
+            "img": "https://mir-s3-cdn-cf.behance.net/projects/404/f6ea7a251748379.Y3JvcCwyMzYyLDE4NDcsMCw0MTU.png",
+            "link": "https://www.behance.net/gallery/251748379/SOCIAL-MEDIA-POSTER-DESIGN",
+        },
+        {
+            "title": "Poster Design",
+            "tag": "PRINT",
+            "img": "https://mir-s3-cdn-cf.behance.net/projects/404/72697a251131707.Y3JvcCwxMzA5LDEwMjQsMTEzLDA.png",
+            "link": "https://www.behance.net/gallery/251131707/Poster-design",
+        },
+        {
+            "title": "Corousal",
+            "tag": "SOCIAL CREATIVE",
+            "img": "https://mir-s3-cdn-cf.behance.net/projects/404/08f9d1251945673.Y3JvcCwyMzYyLDE4NDcsMCwyNTc.png",
+            "link": "https://www.behance.net/gallery/251945673/corousal",
+        },
+    ]
+
+    cols = st.columns(3)
+    for i, p in enumerate(projects):
+        with cols[i % 3]:
+            st.markdown(f"""
+            <div class="proj-card">
+                <div class="proj-img-wrap"><img src="{p['img']}" /></div>
+                <div class="proj-body">
+                    <span class="proj-tag">{p['tag']}</span>
+                    <div class="proj-title">{p['title']}</div>
+                    <a class="proj-link" href="{p['link']}" target="_blank">View case study →</a>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+
+    with cols[len(projects) % 3]:
+        st.markdown("""
+        <div class="proj-card">
+            <div class="proj-img-wrap" style="display:flex;align-items:center;justify-content:center;background:var(--ink);">
+                <span style="font-family:'Archivo Black',sans-serif; color:#fff; font-size:1.1rem; text-align:center; padding:1rem;">PACKAGING<br>DESIGN</span>
+            </div>
+            <div class="proj-body">
+                <span class="proj-tag">PACKAGING</span>
+                <div class="proj-title">Packaging Design Concept</div>
+                <div style="font-size:0.82rem; color:var(--gray);">Product packaging mockups with label design and print-ready artwork, built in Illustrator.</div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="cta-wrap">
+        <div class="cta-title">Let's design something great together.</div>
+        <div class="cta-sub">Open to graphic design roles — branding, social media, and packaging.</div>
+        <a class="cta-btn" href="mailto:poojakhuswha7012@gmail.com">poojakhuswha7012@gmail.com</a>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown('</div>', unsafe_allow_html=True)
